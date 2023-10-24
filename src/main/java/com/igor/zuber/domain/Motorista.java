@@ -18,7 +18,7 @@ import java.io.Serializable;
 public class Motorista implements Serializable {
 
     @Id
-    @Column(name = "CNH")
+    @Column(name = "CNH", length = 50)
     private Long cnh;
 
     @Column(name = "NOME", length = 50, nullable = false, unique = false)

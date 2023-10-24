@@ -1,6 +1,8 @@
 package com.igor.zuber.service;
 
 import com.igor.zuber.domain.Motorista;
+import com.igor.zuber.domain.dto.MotoristaDTO;
+import com.igor.zuber.domain.mapper.MotoristaMapper;
 import com.igor.zuber.repositoy.MotoristaRepository;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +15,12 @@ public class MotoristaService {
     @Autowired
     private MotoristaRepository repository;
 
+    @Autowired
+    private MotoristaMapper mapper;
+
     public void cadastrarMotorista(Motorista motorista) {
         try {
             repository.cadastrar(motorista.getNome(), motorista.getVeiculo(), motorista.getCnh());
-            log.info("Novo motorista cadastrado: " + motorista.getNome());
         } catch (Exception e){
             log.error("CNH já cadastrada: " + motorista.getCnh());
         }
@@ -25,15 +29,14 @@ public class MotoristaService {
     public void apagar(Long cnh) {
         try {
             repository.apagar(cnh);
-            log.info("Motorista removido da tabela: " + cnh);
         } catch (Exception e){
             log.error("Erro ao remover motorista");
         }
     }
 
-    public Motorista get(Long cnh) {
+    public MotoristaDTO get(Long cnh) {
         try {
-            return repository.get(cnh);
+            return mapper.toDomainDTO(repository.get(cnh));
         } catch (Exception e){
             log.error("Motorista não encontrado");
         }

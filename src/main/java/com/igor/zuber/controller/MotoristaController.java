@@ -1,6 +1,7 @@
 package com.igor.zuber.controller;
 
 import com.igor.zuber.domain.Motorista;
+import com.igor.zuber.domain.dto.MotoristaDTO;
 import com.igor.zuber.service.MotoristaService;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,7 @@ public class MotoristaController {
     }
 
     @GetMapping("/{cnh}")
-    public ResponseEntity<Motorista> getMotorista(@PathVariable @NotNull Long cnh){
+    public ResponseEntity<MotoristaDTO> getMotorista(@PathVariable @NotNull Long cnh){
         var response = service.get(cnh);
         if(response == null || response.getNome().isBlank())
             return new ResponseEntity<>(response, HttpStatus.NO_CONTENT);

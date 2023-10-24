@@ -1,6 +1,7 @@
 package com.igor.zuber.controller;
 
 import com.igor.zuber.domain.Passageiro;
+import com.igor.zuber.domain.dto.PassageiroDTO;
 import com.igor.zuber.service.PassageiroService;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,7 @@ public class PassageiroController {
     }
 
     @GetMapping
-    public ResponseEntity<Passageiro> getPassageiro(@RequestBody @NotNull Passageiro passageiro){
+    public ResponseEntity<PassageiroDTO> getPassageiro(@RequestBody @NotNull Passageiro passageiro){
         var response = service.get(passageiro.getEmail());
         if(response == null || response.getNome().isBlank())
             return new ResponseEntity<>(response, HttpStatus.NO_CONTENT);

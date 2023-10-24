@@ -1,8 +1,6 @@
 package com.igor.zuber.repositoy;
 
-import com.igor.zuber.domain.Motorista;
 import com.igor.zuber.domain.Passageiro;
-import com.igor.zuber.domain.mapper.MotoristaMapper;
 import com.igor.zuber.domain.mapper.PassageiroMapper;
 import org.jdbi.v3.core.Handle;
 import org.jdbi.v3.core.Jdbi;

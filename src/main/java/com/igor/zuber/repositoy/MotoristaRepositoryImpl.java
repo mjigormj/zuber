@@ -48,8 +48,8 @@ public class MotoristaRepositoryImpl implements MotoristaRepository {
         try (Handle handle = jdbi.open()) {
             Query query = handle.createQuery("SELECT * FROM motoristas WHERE cnh = :cnh")
                     .bind("cnh", cnh);
-            var result = query.mapToMap().findFirst().get();
-            return MotoristaMapper.toDomain(result);
+            var response = query.mapToMap().findFirst().get();
+            return MotoristaMapper.toDomain(response);
         }
     }
 

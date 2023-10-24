@@ -20,7 +20,7 @@ import javax.persistence.Table;
 public class Passageiro {
 
     @Id
-    @Column(name = "EMAIL")
+    @Column(name = "EMAIL", length = 50)
     private String email;
 
     @Column(name = "NOME", length = 50, nullable = false)
