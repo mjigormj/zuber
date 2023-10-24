@@ -19,7 +19,7 @@ spring:
     activate:
       on-profile: development
   datasource:
-    password: passwd
+    password: 1234
     url: jdbc:postgresql://localhost:5432/
     username: postgres
 name: prod-YAML
