@@ -35,12 +35,7 @@ public class MotoristaService {
     }
 
     public MotoristaDTO get(Long cnh) {
-        try {
             return mapper.toDomainDTO(repository.get(cnh));
-        } catch (Exception e){
-            log.error("Motorista não encontrado");
-        }
-        return null;
     }
 
     public void atualizarMotorista(Motorista motorista) {

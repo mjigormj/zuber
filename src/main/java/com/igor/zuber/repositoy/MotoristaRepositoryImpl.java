@@ -2,6 +2,7 @@ package com.igor.zuber.repositoy;
 
 import com.igor.zuber.domain.Motorista;
 import com.igor.zuber.domain.mapper.MotoristaMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.jdbi.v3.core.Handle;
 import org.jdbi.v3.core.Jdbi;
 import org.jdbi.v3.core.statement.Query;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
+@Slf4j
 @Repository
 public class MotoristaRepositoryImpl implements MotoristaRepository {
 
@@ -49,6 +51,7 @@ public class MotoristaRepositoryImpl implements MotoristaRepository {
             Query query = handle.createQuery("SELECT * FROM motoristas WHERE cnh = :cnh")
                     .bind("cnh", cnh);
             var response = query.mapToMap().findFirst().get();
+            log.info(response.toString());
             return MotoristaMapper.toDomain(response);
         }
     }

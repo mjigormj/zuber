@@ -15,6 +15,10 @@
 	<description>API REST completa com as funcionalidades similares ao Uber</description>
 	<properties>
 		<java.version>11</java.version>
+		<version.swagger.codegen>3.0.0-rc1</version.swagger.codegen>
+		<yaml.file>${project.basedir}/src/main/resources/zuber.yaml</yaml.file>
+		<generated-sources-path>${project.build.directory}/generated-sources</generated-sources-path>
+		<generated-sources-java-path>main/java</generated-sources-java-path>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -71,7 +75,22 @@
 			<version>RELEASE</version>
 			<scope>compile</scope>
 		</dependency>
-	</dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-core</artifactId>
+            <version>10.1.16</version>
+        </dependency>
+    </dependencies>
 
 	<build>
 		<plugins>
@@ -85,6 +104,14 @@
 							<artifactId>lombok</artifactId>
 						</exclude>
 					</excludes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>16</source>
+					<target>16</target>
 				</configuration>
 			</plugin>
 		</plugins>
