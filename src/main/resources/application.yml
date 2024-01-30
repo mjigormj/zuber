@@ -19,12 +19,17 @@ spring:
     activate:
       on-profile: development
   datasource:
-    password: passwd
+    password: 1234
     url: jdbc:postgresql://localhost:5432/
     username: postgres
+#  error:
+#    include-stacktrace: never
 name: prod-YAML
 environment: production
 enabled: true
 servers:
   - www.abc.com
   - www.xyz.com
+
+jwt:
+  secret: usersecret
