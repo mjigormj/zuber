@@ -19,11 +19,11 @@ public class PassageiroService {
     private PassageiroMapper mapper;
 
     public void cadastrarPassageiro(Passageiro passageiro) {
-//        try {
+        try {
             repository.cadastrar(passageiro.getNome(), passageiro.getEmail(), passageiro.getDtNascimento(), passageiro.getCpf());
-//        } catch (Exception e){
-//            log.error("Passageiro já cadastrado");
-//        }
+        } catch (Exception e){
+            log.error("Passageiro já cadastrado");
+        }
     }
 
     public void apagar(String email) {
@@ -35,7 +35,12 @@ public class PassageiroService {
     }
 
     public PassageiroDTO get(String email) {
+        try {
             return mapper.toDomainDTO(repository.get(email));
+        } catch (Exception e){
+            log.error("Passageiro não encontrado");
+        }
+        return null;
     }
 
     public void atualizarMotorista(Passageiro passageiro) {
